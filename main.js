@@ -168,11 +168,16 @@ const tvTypes = inventory.map((inventory) => {
 });
 console.log(tvTypes);
 
+
+
 //1b
 const soldOut = inventory.filter((inventory) => {
   return inventory.sold === inventory.originalStock;
 })
 console.log(soldOut);
+
+
+
 
 //1c
 
@@ -181,9 +186,12 @@ const hasAmbilight = inventory.filter((inventory) => {
 })
 console.log(hasAmbilight);
 
+
+
 //1d
 inventory.sort((a, b) => a.price - b.price);
 console.log(inventory);
+
 
 
 //2a
@@ -193,10 +201,14 @@ for (let i = 0; i < inventory.length; i++) {
 }
 console.log(amountSold);
 
+
+
 //2b
 document.getElementById(verkocht);
 verkocht.textContent = amountSold;
 verkocht.style.color = "green";
+
+
 
 //2c
 let amountBought = 0;
@@ -205,10 +217,14 @@ for (let i = 0; i < inventory.length; i++) {
 }
 console.log(amountBought);
 
+
+
 //2d
 document.getElementById(gekocht);
 gekocht.textContent = amountBought;
 gekocht.style.color = "blue";
+
+
 
 //2e
 let amountAvailable = 0;
@@ -218,6 +234,8 @@ console.log(amountAvailable);
 document.getElementById(opVoorraad);
 opVoorraad.textContent = amountAvailable;
 opVoorraad.style.color = "red";
+
+
 
 //3a en b
 
@@ -249,11 +267,14 @@ function tvNames(tv) {
 console.log(tvNames(inventory[0]));
 
 
+
 //4b
 function tvPrice(tv) {
     return '€' + tv.price + ',-';
 }
 console.log(tvPrice(inventory[0]));
+
+
 
 
 //4c
@@ -270,8 +291,10 @@ function tvData(tv) {
 
 console.log(tvData(inventory[5]));
 
-//4d en e
 
+
+
+//4d en e
 function print(arr) {
   let result = "";
   arr.map((input) => {
@@ -281,13 +304,14 @@ function print(arr) {
     result +=  result1 + "\n" + result2 + "\n" + result3 + "\n";
   });
   return result;
-
 }
 
 console.log(print(inventory));
 
-//bonus opdracht 2
 
+
+
+//bonus opdracht 2
 function print2(arr) {
 
   let result = "";
@@ -299,7 +323,7 @@ function print2(arr) {
 
     const listOfTVs = document.createDocumentFragment();
 
-    const li = document.createElement('li')
+    const li = document.createElement('li');
     li.textContent = result;
     listOfTVs.appendChild(li);
 
@@ -309,7 +333,7 @@ function print2(arr) {
   });
 }
 
-print2(inventory)
+print2(inventory);
 
 
 
@@ -321,6 +345,8 @@ function giveTvName(arr) {
   console.log(soldOut);
 }
 
+
+
 //1c
 function giveAmbilight(arr) {
   const hasAmbilight = arr.filter((inventory) => {
@@ -329,6 +355,7 @@ function giveAmbilight(arr) {
   console.log(hasAmbilight);
 }
 
+
 //1d
 function sortOnPrice(arr) {
   arr.sort((a, b) => a.price - b.price);
@@ -336,17 +363,17 @@ function sortOnPrice(arr) {
 }
 
 
-//jean remys vraaagjes
+
+//jeremy stelden een vraag toen zijn we zelf een beetje gaan aankloten
+//we krijgen alleen geen data er in terwijl dit bij opdracht 3 wel werkt
+//werkt dit niet voor de sort methode?
+
 function jeremy(arr) {
-  let newArray;
-  arr.sort((a, b) => {
-    newArray = a.price - b.price;
-    return newArray
-  });
+  arr.sort((a, b) => a.price - b.price);
 
   const listRemy = document.createDocumentFragment();
-  for (let array of newArray) {
-    const li = document.createElement('li')
+  for (let array of arr) {
+    const li = document.createElement('li');
     li.textContent = array;
     listRemy.appendChild(li);
   }
@@ -354,7 +381,7 @@ function jeremy(arr) {
   container.appendChild(listRemy);
 }
 
-jeremy(inventory)
+jeremy(inventory);
 
 
 
