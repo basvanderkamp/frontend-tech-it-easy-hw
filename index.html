@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Tech It Easy Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<p> het aantal tvs dat is verkocht: <span id="verkocht">[verkocht]</span></p>
+<p> het aantal tvs dat ingekocht: <span id="gekocht">[gekocht]</span></p>
+<p>het aantal tvs nog op voorraad: <span id="opVoorraad">[opVoorraad</span></p>
+
+<ul id="BrandList"></ul>
+
+<input type="button" value="click to see whats sold out" onclick="giveTvName(inventory);">
+<input type="button" value="this tv has ambilight" onclick="giveAmbilight(inventory);">
+<input type="button" value="click to sort products on price" onclick="sortOnPrice(inventory);">
+
+<p> informatie over de tv collectie <ul id="tvInfo"></ul></p>
+
+<ul id="Remy"></ul>
+
+
+<script src="main.js"></script>
+
 
 </body>
 </html>

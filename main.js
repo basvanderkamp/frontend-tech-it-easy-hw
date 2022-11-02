@@ -161,3 +161,204 @@ const inventory = [
     sold: 8,
   },
 ];
+
+//1a
+const tvTypes = inventory.map((inventory) => {
+  return inventory.name;
+});
+console.log(tvTypes);
+
+//1b
+const soldOut = inventory.filter((inventory) => {
+  return inventory.sold === inventory.originalStock;
+})
+console.log(soldOut);
+
+//1c
+
+const hasAmbilight = inventory.filter((inventory) => {
+  return inventory.options.ambiLight;
+})
+console.log(hasAmbilight);
+
+//1d
+inventory.sort((a, b) => a.price - b.price);
+console.log(inventory);
+
+
+//2a
+let amountSold = 0;
+for (let i = 0; i < inventory.length; i++) {
+  amountSold += inventory[i].sold;
+}
+console.log(amountSold);
+
+//2b
+document.getElementById(verkocht);
+verkocht.textContent = amountSold;
+verkocht.style.color = "green";
+
+//2c
+let amountBought = 0;
+for (let i = 0; i < inventory.length; i++) {
+  amountBought += inventory[i].originalStock;
+}
+console.log(amountBought);
+
+//2d
+document.getElementById(gekocht);
+gekocht.textContent = amountBought;
+gekocht.style.color = "blue";
+
+//2e
+let amountAvailable = 0;
+amountAvailable = amountBought - amountSold;
+console.log(amountAvailable);
+
+document.getElementById(opVoorraad);
+opVoorraad.textContent = amountAvailable;
+opVoorraad.style.color = "red";
+
+//3a en b
+
+function tvBrands(arr) {
+  const tvBrand = arr.map((inventory) =>{
+    return inventory.brand;
+  });
+  const listOfBrands = document.createDocumentFragment();
+  for (let Brand of tvBrand) {
+    const li = document.createElement('li')
+    li.textContent = Brand;
+    listOfBrands.appendChild(li);
+  }
+  const container = document.getElementById('BrandList');
+  container.appendChild(listOfBrands);
+}
+
+tvBrands(inventory);
+
+
+
+
+
+
+//4a
+function tvNames(tv) {
+    return tv.brand + ' ' + tv.type + ' - ' + tv.name;
+}
+console.log(tvNames(inventory[0]));
+
+
+//4b
+function tvPrice(tv) {
+    return '€' + tv.price + ',-';
+}
+console.log(tvPrice(inventory[0]));
+
+
+//4c
+function tvData(tv) {
+  let container = "";
+
+  for (let i = 0; i < tv.availableSizes.length; i++) {
+      const inch = tv.availableSizes[i];
+      const cm = tv.availableSizes[i] * 2.54;
+      container =`${container}${inch} inch (${cm}) cm | `;
+    }
+  return container;
+}
+
+console.log(tvData(inventory[5]));
+
+//4d en e
+
+function print(arr) {
+  let result = "";
+  arr.map((input) => {
+    const result1 = tvNames(input);
+    const result2 = tvPrice(input);
+    const result3 = tvData(input);
+    result +=  result1 + "\n" + result2 + "\n" + result3 + "\n";
+  });
+  return result;
+
+}
+
+console.log(print(inventory));
+
+//bonus opdracht 2
+
+function print2(arr) {
+
+  let result = "";
+  arr.map((input) => {
+    const result1 = tvNames(input);
+    const result2 = tvPrice(input);
+    const result3 = tvData(input);
+    result =  result1 + "\n" + result2 + "\n" + result3 + "\n";
+
+    const listOfTVs = document.createDocumentFragment();
+
+    const li = document.createElement('li')
+    li.textContent = result;
+    listOfTVs.appendChild(li);
+
+    const container = document.getElementById('tvInfo');
+    container.appendChild(listOfTVs);
+
+  });
+}
+
+print2(inventory)
+
+
+
+//bonus 1b
+function giveTvName(arr) {
+  const soldOut = arr.filter((inventory) => {
+    return inventory.sold === inventory.originalStock;
+  });
+  console.log(soldOut);
+}
+
+//1c
+function giveAmbilight(arr) {
+  const hasAmbilight = arr.filter((inventory) => {
+    return inventory.options.ambiLight;
+  });
+  console.log(hasAmbilight);
+}
+
+//1d
+function sortOnPrice(arr) {
+  arr.sort((a, b) => a.price - b.price);
+  console.log(arr);
+}
+
+
+//jean remys vraaagjes
+function jeremy(arr) {
+  let newArray;
+  arr.sort((a, b) => {
+    newArray = a.price - b.price;
+    return newArray
+  });
+
+  const listRemy = document.createDocumentFragment();
+  for (let array of newArray) {
+    const li = document.createElement('li')
+    li.textContent = array;
+    listRemy.appendChild(li);
+  }
+  const container = document.getElementById('Remy');
+  container.appendChild(listRemy);
+}
+
+jeremy(inventory)
+
+
+
+
+
+
+
