@@ -267,13 +267,11 @@ function tvNames(tv) {
 console.log(tvNames(inventory[0]));
 
 
-
 //4b
 function tvPrice(tv) {
     return '€' + tv.price + ',-';
 }
 console.log(tvPrice(inventory[0]));
-
 
 
 
@@ -288,13 +286,12 @@ function tvData(tv) {
     }
   return container;
 }
-
 console.log(tvData(inventory[5]));
 
 
 
 
-//4d en e
+//4d en e printen in console
 function print(arr) {
   let result = "";
   arr.map((input) => {
@@ -308,32 +305,36 @@ function print(arr) {
 
 console.log(print(inventory));
 
-
-
-
 //bonus opdracht 2
-function print2(arr) {
+//4d en e printen op pagina
 
-  let result = "";
-  arr.map((input) => {
-    const result1 = tvNames(input);
-    const result2 = tvPrice(input);
-    const result3 = tvData(input);
-    result =  result1 + "\n" + result2 + "\n" + result3 + "\n";
+function printAllDetails(Array) {
+  Array.map((tv) => {
+    const ListOfTv = document.createDocumentFragment();
 
-    const listOfTVs = document.createDocumentFragment();
+    const tableRowElementName = document.createElement('tr');
+    tableRowElementName.textContent = tvNames(tv);
+    ListOfTv.appendChild(tableRowElementName);
 
-    const li = document.createElement('li');
-    li.textContent = result;
-    listOfTVs.appendChild(li);
+    const tableRowElementPrice = document.createElement('tr');
+    tableRowElementPrice.textContent = tvPrice(tv);
+    ListOfTv.appendChild(tableRowElementPrice);
 
-    const container = document.getElementById('tvInfo');
-    container.appendChild(listOfTVs);
+    const tableRowElementSize = document.createElement('tr');
+    tableRowElementSize.textContent = tvData(tv);
+    ListOfTv.appendChild(tableRowElementSize);
 
+    const container = document.getElementById('selected-tv-info');
+    container.appendChild(ListOfTv);
   });
 }
+printAllDetails(inventory);
 
-print2(inventory);
+
+
+
+
+
 
 
 
@@ -341,47 +342,31 @@ print2(inventory);
 function giveTvName(arr) {
   const soldOut = arr.filter((inventory) => {
     return inventory.sold === inventory.originalStock;
-  });
-  console.log(soldOut);
-}
 
+  });
+
+  printAllDetails(soldOut)
+}
 
 
 //1c
-function giveAmbilight(arr) {
-  const hasAmbilight = arr.filter((inventory) => {
-    return inventory.options.ambiLight;
-  });
-  console.log(hasAmbilight);
-}
-
+  function giveAmbilight(arr) {
+    const hasAmbilight = arr.filter((inventory) => {
+      return inventory.options.ambiLight;
+    });
+    printAllDetails(hasAmbilight);
+  }
 
 //1d
-function sortOnPrice(arr) {
-  arr.sort((a, b) => a.price - b.price);
-  console.log(arr);
-}
-
-
-
-//jeremy stelden een vraag toen zijn we zelf een beetje gaan aankloten
-//we krijgen alleen geen data er in terwijl dit bij opdracht 3 wel werkt
-//werkt dit niet voor de sort methode?
-
-function jeremy(arr) {
-  arr.sort((a, b) => a.price - b.price);
-
-  const listRemy = document.createDocumentFragment();
-  for (let array of arr) {
-    const li = document.createElement('li');
-    li.textContent = array;
-    listRemy.appendChild(li);
+  function sortOnPrice(arr) {
+    arr.sort((a, b) => a.price - b.price);
+    printAllDetails(arr);
   }
-  const container = document.getElementById('Remy');
-  container.appendChild(listRemy);
-}
 
-jeremy(inventory);
+
+
+
+
 
 
 
