@@ -262,7 +262,7 @@ tvBrands(inventory);
 
 //4a
 function tvNames(tv) {
-    return tv.brand + ' ' + tv.type + ' - ' + tv.name;
+    return `${tv.brand} ${tv.type} - ${tv.name}``;
 }
 console.log(tvNames(inventory[0]));
 
