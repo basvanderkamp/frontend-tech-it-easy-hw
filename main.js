@@ -244,7 +244,7 @@ function tvBrands(arr) {
     return inventory.brand;
   });
   const listOfBrands = document.createDocumentFragment();
-  for (let Brand of tvBrand) {
+  for (let brand of tvBrand) {
     const li = document.createElement('li')
     li.textContent = Brand;
     listOfBrands.appendChild(li);
